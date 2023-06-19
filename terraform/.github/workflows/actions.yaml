@@ -22,10 +22,10 @@ jobs:
           terraform_version: ${{ secrets.TF_VERSION }}
         
       - name: terraform init
-        run: terraform init -backend-config="access_key=${{ secrets.ACCESS_KEY }}" -backend-config="secret_key=${{ secrets.SECRET_KEY }}"
+        run: terraform init -backend-config="access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" -backend-config="secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
         
       - name: Plan Terraform changes
-        run: terraform plan -var="access_key=${{ secrets.ACCESS_KEY }}" -var="secret_key=${{ secrets.SECRET_KEY }}"
+        run: terraform plan -var="access_key=${{ secrets.AWS_ACCESS_KEY_ID  }}" -var="secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
 
       - name: Apply Terraform changes
-        run: terraform apply -auto-approve -var="access_key=${{ secrets.ACCESS_KEY }}" -var="secret_key=${{ secrets.SECRET_KEY }}"
+        run: terraform apply -auto-approve -var="access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" -var="secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
