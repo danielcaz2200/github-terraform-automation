@@ -1,14 +1,18 @@
-name: Deploy Infrastructure
+name: "Deploy Infrastructure"
 
 on:
   push:
     branches:
-      - master
+    - main
+    pull_request:
+
 
 jobs:
   tf_fmt:
     name: Deploy Infrastructure
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
 
     - name: Checkout Repo
